@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "701127202664",
+    "firebase_url": "https://android-edx-course-76fba.firebaseio.com",
+    "project_id": "android-edx-course-76fba",
+    "storage_bucket": "android-edx-course-76fba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701127202664:android:b244ca756d61d2db",
+        "android_client_info": {
+          "package_name": "edu.edx.yuri.androidchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701127202664-p1eb5r194g6r6o0106v5n5kfcmsh8bm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOdCM8r0icjeZuugawudcM1J9iDve49xU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

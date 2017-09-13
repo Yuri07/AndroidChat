@@ -11,6 +11,10 @@ import edu.edx.yuri.androidchat.domain.FirebaseHelper;
 
 /**
  * Created by yuri_ on 31/05/2017.
+ *
+ * All implementation related to the firebase
+ * will be under the login repository implementation
+ *
  */
 
 public class LoginRepositoryImpl implements LoginRepository {

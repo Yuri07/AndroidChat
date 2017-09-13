@@ -20,7 +20,6 @@ public class LoginPresenterImpl implements LoginPresenter {
         this.eventBus = GreenRobotEventBus.getInstance();
         this.loginInteractor = new LoginInteractorImpl();
 
-
     }
 
     @Override

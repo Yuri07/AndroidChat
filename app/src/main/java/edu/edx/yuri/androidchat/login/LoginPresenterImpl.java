@@ -3,6 +3,7 @@ package edu.edx.yuri.androidchat.login;
 import edu.edx.yuri.androidchat.lib.EventBus;
 import edu.edx.yuri.androidchat.lib.GreenRobotEventBus;
 import edu.edx.yuri.androidchat.login.LoginPresenter;
+import edu.edx.yuri.androidchat.login.events.LoginEvent;
 import edu.edx.yuri.androidchat.login.ui.LoginView;
 
 /**
@@ -28,11 +29,31 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
+    public void onDestroy() {
+
+    }
+
+    @Override
     public void checkForAuthenticatedUser() {
         if(loginView!=null){
             loginView.disableInputs();
             loginView.showProgress();
         }
         loginInteractor.checkAlreadyAutheticated();
+    }
+
+    @Override
+    public void onEventMainThread(LoginEvent event) {
+
+    }
+
+    @Override
+    public void validateLogin(String email, String password) {
+
+    }
+
+    @Override
+    public void registerNewUser(String email, String password) {
+
     }
 }

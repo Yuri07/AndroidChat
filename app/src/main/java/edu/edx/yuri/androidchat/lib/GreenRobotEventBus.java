@@ -25,4 +25,12 @@ public class GreenRobotEventBus implements EventBus {
         eventBus.register(subscriber);
     }
 
+    public void unregister(Object subscriber){
+        eventBus.unregister(subscriber);
+    }
+
+    public void post(Object event){
+        eventBus.post(event);
+    }
+
 }

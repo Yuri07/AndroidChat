@@ -7,5 +7,7 @@ package edu.edx.yuri.androidchat.login;
 public interface LoginInteractor {
 
     void checkAlreadyAutheticated();
+    void doSignUp(String email, String password);
+    void doSignIn(String email, String password);
 
 }

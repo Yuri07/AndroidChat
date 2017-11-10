@@ -1,6 +1,8 @@
 package edu.edx.yuri.androidchat.login.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +12,9 @@ import android.widget.RelativeLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import edu.edx.yuri.androidchat.R;
+import edu.edx.yuri.androidchat.contactList.ui.ContactListActivity;
 import edu.edx.yuri.androidchat.login.LoginPresenter;
 import edu.edx.yuri.androidchat.login.LoginPresenterImpl;
 
@@ -31,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        loginPresenter = new LoginPresenterImpl(this);
+        loginPresenter = new LoginPresenterImpl(this);//LoginRepositoryImpl ja foi instanciado com myUserReference igual a null ou apontando para aponta para o users/usercurrent@email_com
         loginPresenter.onCreate();//registrando loginPresenter no barramento de eventos
         loginPresenter.checkForAuthenticatedUser();
 
@@ -86,6 +90,49 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         });*/
 
     }
+
+    @Override
+    protected void onDestroy() {
+        loginPresenter.onDestroy();
+        super.onDestroy();
+    }
+
+    @OnClick(R.id.btnSignup)
+    public void handleSignUp(){
+        loginPresenter.registerNewUser(editTxtEmail.getText().toString(),
+                editTxtPassword.getText().toString());
+    }
+
+    @OnClick(R.id.btnSignin)
+    public void handleSignIn() {
+        loginPresenter.validateLogin(editTxtEmail.getText().toString(),
+                editTxtPassword.getText().toString());
+    }
+
+    @Override
+    public void navigateToMainScreen() {
+        startActivity(new Intent(this, ContactListActivity.class));
+    }
+
+    @Override
+    public void loginError(String error) {
+        editTxtPassword.setText("");
+        String msgError = String.format(getString(R.string.login_error_message_signin), error);
+        editTxtPassword.setError(msgError);
+    }
+
+    @Override
+    public void newUserSuccess() {
+        Snackbar.make(layoutMainContainer, R.string.login_notice_message_useradded, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void newUserError(String error) {
+        editTxtPassword.setText("");
+        String msgError = String.format(getString(R.string.login_error_message_signup), error);
+        editTxtPassword.setError(msgError);
+    }
+
 
     @Override
     public void enableInputs() {

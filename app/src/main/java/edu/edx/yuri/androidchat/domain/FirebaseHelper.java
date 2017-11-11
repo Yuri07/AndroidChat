@@ -19,12 +19,13 @@ import edu.edx.yuri.androidchat.contactList.entities.User;
 
 public class FirebaseHelper {
 
+
     private final static String USERS_PATH = "users";
     public final static String CONTACTS_PATH = "contacts";
+    private final static String SEPARATOR = "___";
+    private final static String CHATS_PATH = "chats";
 
     private DatabaseReference dataReference;
-
-
 
 
     private static class SingletonHolder{
@@ -36,8 +37,6 @@ public class FirebaseHelper {
     }
 
 
-
-
     private FirebaseHelper(){
         dataReference = FirebaseDatabase.getInstance().getReference();
     }
@@ -45,7 +44,6 @@ public class FirebaseHelper {
     public DatabaseReference getDatareference(){
         return dataReference;
     }
-
 
 
     public DatabaseReference getMyUserReference(){
@@ -81,6 +79,17 @@ public class FirebaseHelper {
     public DatabaseReference getOneContactReference(String mainEmail, String childEmail){
         String childKey = childEmail.replace(".","_");
         return getUserReference(mainEmail).child(CONTACTS_PATH).child(childKey);
+    }
+
+    public DatabaseReference getChatsReference(String receiver){
+        String keySender = getAuthUserEmail().replace(".","_");
+        String keyReceiver = receiver.replace(".","_");
+
+        String keyChat = keySender + SEPARATOR + keyReceiver;
+        if (keySender.compareTo(keyReceiver) > 0) {//Esse método retorna um numero inteiro. Se ele for menor do que zero, o primeiro argumento é "menor" (alfabeticamente, nesse caso) que o segundo; maior que zero se o primeiro for "maior" que o segundo, e igual a zero se eles forem iguais. Esse método diferencia maiúsculas de minúsuclas. Se não quiser isso, use o compareToIgnoreCase
+            keyChat = keyReceiver + SEPARATOR + keySender;//sempre o primeiro em ordem alfabetica vem primeiro
+        }
+        return dataReference.getRoot().child(CHATS_PATH).child(keyChat);
     }
 
     public void changeUserConnectionStatus(boolean online) {

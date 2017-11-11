@@ -11,6 +11,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.edx.yuri.androidchat.contactList.entities.User;
+
 /**
  * Created by yuri_ on 31/05/2017.
  */
@@ -99,8 +101,8 @@ public class FirebaseHelper {
                 for (DataSnapshot child : snapshot.getChildren()) {
                     String email = child.getKey();//um email de um contato meu
                     DatabaseReference reference = getOneContactReference(email, myEmail);//pegando a
-                    // referencia do meu contato para  avisa-lo que estou online(tornar true o valor
-                    //users/email/contacts/myEmail).
+                    // referencia do meu contato para  avisa-lo que estou online ou offline(tornar true
+                    // ou false o valor de 'users/email/contacts/myEmail').
                     reference.setValue(online);
                 }
                 if (signoff){
@@ -116,6 +118,10 @@ public class FirebaseHelper {
 
     public void notifyContactsOfConnectionChange(boolean online) {
         notifyContactsOfConnectionChange(online, false);
+    }
+
+    public void signOff(){
+        notifyContactsOfConnectionChange(User.OFFLINE, true);
     }
 
 }

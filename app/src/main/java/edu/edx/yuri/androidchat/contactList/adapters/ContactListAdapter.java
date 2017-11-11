@@ -45,7 +45,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         User user = contactList.get(position);
-        holder.setClickListener(user, clickListener);
+        holder.setClickListener(user, clickListener);//chama o listener da ContactListActivity
 
         String email = user.getEmail();
         boolean online = user.isOnline();
@@ -120,8 +120,8 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.view = view;
-            ButterKnife.bind(this, view);
+            this.view = itemView;
+            ButterKnife.bind(this, itemView);
         }
 
         public void setClickListener(final User user,

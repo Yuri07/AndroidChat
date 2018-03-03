@@ -3,6 +3,7 @@ package edu.edx.yuri.androidchat.chat.adapters;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -99,9 +100,9 @@ public class ChatAdapter extends RecyclerView.Adapter <ChatAdapter.ViewHolder> {
         @BindView(R.id.txtMessage)
         TextView txtMessage;
 
-        public ViewHolder(View view) {
-            super(view);
-            ButterKnife.bind(this, view);
+        public ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

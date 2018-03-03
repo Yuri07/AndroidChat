@@ -6,7 +6,8 @@ package edu.edx.yuri.androidchat.contactList;
 
 public class ContactListInteractorImpl implements ContactListInteractor {
 
-    ContactListRepositoryImpl contactListRepository;
+    //ContactListRepositoryImpl contactListRepository;
+    ContactListRepository contactListRepository;//essa substituicao ainda nao foi testada(31/01/2018)
 
     public ContactListInteractorImpl() {
         this.contactListRepository = new ContactListRepositoryImpl();

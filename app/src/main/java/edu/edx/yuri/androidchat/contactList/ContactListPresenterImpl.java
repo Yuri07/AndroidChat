@@ -27,9 +27,8 @@ public class ContactListPresenterImpl implements ContactListPresenter {
     }
 
     @Override
-    public void onPause() {
-        contactListSessionInteractor.changeConnectionStatus(User.OFFLINE);
-        contactListInteractor.unSubscribeForContactEvents();
+    public void onCreate() {
+        eventBus.register(this);
     }
 
     @Override
@@ -39,8 +38,9 @@ public class ContactListPresenterImpl implements ContactListPresenter {
     }
 
     @Override
-    public void onCreate() {
-        eventBus.register(this);
+    public void onPause() {
+        contactListSessionInteractor.changeConnectionStatus(User.OFFLINE);
+        contactListInteractor.unSubscribeForContactEvents();
     }
 
     @Override

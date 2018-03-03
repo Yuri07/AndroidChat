@@ -65,8 +65,8 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
 
     @Override
     protected void onPause() {
-        super.onPause();
         contactListPresenter.onPause();
+        super.onPause();
     }
 
     @Override
@@ -122,8 +122,6 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
         AndroidChatApplication app = (AndroidChatApplication) getApplication();
         ImageLoader imageLoader = app.getImageLoader();
         adapter = new ContactListAdapter(new ArrayList<User>(), imageLoader, this);
-
-
     }
 
     private void setupRecyclerView() {

@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class User {
 
-    String email;
-    boolean online;
+    private String email;
+    private boolean online;
     Map<String, Boolean> contacts;
     public final static boolean ONLINE = true;
     public final static boolean OFFLINE = false;

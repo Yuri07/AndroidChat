@@ -109,7 +109,7 @@ public class LoginRepositoryImpl implements LoginRepository {
     }
 
     private void initSignIn(DataSnapshot snapshot){
-        User currentUser = snapshot.getValue(User.class);
+        User currentUser = snapshot.getValue(User.class);//null caso seja a primeira vez que o metodo e executado para esse usuario
         if (currentUser == null) {
             registerNewUser();
         }

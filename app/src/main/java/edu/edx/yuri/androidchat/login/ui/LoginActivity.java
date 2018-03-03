@@ -39,56 +39,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         loginPresenter.onCreate();//registrando loginPresenter no barramento de eventos
         loginPresenter.checkForAuthenticatedUser();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*// Connect to the Firebase database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        // Get a reference to the user child items it the database
-        final DatabaseReference myRef = database.getReference("user");
-
-        final DatabaseReference emailRef = myRef.child("email");
-
-        emailRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                editTxtEmail.setText(value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w("TAG:", "Failed to read value.", databaseError.toException());
-            }
-        });
-
-        btnSingnin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newEmail = editTxtEmail.getText().toString();
-                emailRef.setValue(newEmail);
-            }
-        });*/
-
     }
 
     @Override
